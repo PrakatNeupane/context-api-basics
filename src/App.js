@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Index } from './pages/Index';
 import { About } from './pages/About';
+import { UserContext } from './UserContext';
 
 function App() {
   return (
@@ -18,10 +19,12 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/about/" element={<About />} />
-      </Routes>
+      <UserContext.Provider value="hello from context">
+        <Routes>
+          <Route path="/" exact element={<Index />} />
+          <Route path="/about/" element={<About />} />
+        </Routes>
+      </UserContext.Provider>
     </BrowserRouter>
 
   );
